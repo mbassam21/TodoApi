@@ -23,10 +23,10 @@ jobs:
           dotnet-version: '7.0'
 
       - name: Restore dependencies
-        run: dotnet restore
+        run: dotnet restore ./TodoApi
 
-      - name: Build
-        run: dotnet build --configuration Release --no-restore
+      - name: Build Project
+        run: dotnet build --configuration Release --no-restore ./TodoApi
 
       - name: Run Tests
         run: dotnet test --configuration Release --no-restore --verbosity normal
