@@ -87,11 +87,11 @@ jobs:
           curl -LO https://github.com/sigstore/cosign/releases/latest/download/cosign-linux-amd64
           chmod +x cosign-linux-amd64
           sudo mv cosign-linux-amd64 /usr/local/bin/cosign
+          cosign version
 
       - name: Sign Image with Cosign (Keyless)
         env:
           COSIGN_EXPERIMENTAL: "true"  # Enables keyless signing
         run: |
-          cosign sign --yes --identity-token $(curl -sSL -H "Authorization: Bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
-            "$ACTIONS_ID_TOKEN_REQUEST_URL" | jq -r .value) ${{ secrets.DOCKERHUB_USERNAME }}/todoapi:latest
+          cosign sign --yes ${{ secrets.DOCKERHUB_USERNAME }}/todoapi:latest
 
