@@ -27,7 +27,7 @@ jobs:
         run: dotnet restore ./TodoApi
 
       - name: Build Project
-        run: dotnet build --no-restore ./TodoApi -warnaserror-
+        run: dotnet build --no-restore ./TodoApi
 
       - name: Run Tests
         run: dotnet test --configuration Release --no-restore --verbosity normal ./TodoApi
