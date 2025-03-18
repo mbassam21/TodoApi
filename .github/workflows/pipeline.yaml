@@ -29,7 +29,7 @@ jobs:
         run: dotnet build --configuration Release --no-restore ./TodoApi
 
       - name: Run Tests
-        run: dotnet test --configuration Release --no-restore --verbosity normal
+        run: dotnet test --configuration Release --no-restore --verbosity normal ./TodoApi
 
   security-scan:
     name: Security Scanning
