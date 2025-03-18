@@ -12,6 +12,7 @@ jobs:
   build-test:
     name: Build & Test .NET App
     runs-on: ubuntu-latest
+    environment: dev
 
     steps:
       - name: Checkout code
@@ -26,7 +27,7 @@ jobs:
         run: dotnet restore ./TodoApi
 
       - name: Build Project
-        run: dotnet build --configuration Release --no-restore ./TodoApi
+        run: dotnet build --no-restore ./TodoApi
 
       - name: Run Tests
         run: dotnet test --configuration Release --no-restore --verbosity normal ./TodoApi
@@ -41,7 +42,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Run CodeQL Security Scan
-        uses: github/codeql-action/init@v2
+        uses: github/codeql-action/init@v3
         with:
           languages: 'csharp'
 
